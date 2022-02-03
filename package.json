@@ -4,6 +4,8 @@
   "description": "Recipe App",
   "main": "index.js",
   "scripts": {
+    "start:dev": "node webpackDevServer",
+    "build:dev": "webpack --config webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +28,7 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.3",
     "babel-loader": "^8.2.3",
+    "colors": "^1.4.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
