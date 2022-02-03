@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "outDir": "./assets/dist",
+    "noImplicitAny": true,
+    "jsx": "react",
+    "allowJs": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "~recipe": ["modules/index.ts"],
+      "~recipe/*": ["./modules/*/index.ts"]
+    },
+    "moduleResolution": "node"
+  },
+  "include": ["src"]
+}
