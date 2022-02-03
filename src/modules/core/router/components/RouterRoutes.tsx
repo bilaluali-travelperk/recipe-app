@@ -16,6 +16,7 @@ const RouterRoutes = ({ routes, NotFound }: Props): React.ReactElement => (
           <Route key={route.path} {...route} />
         ),
       )}
+      <Route path="*" element={NotFound} />
     </Routes>
   </BrowserRouter>
 );
