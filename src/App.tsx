@@ -1,7 +1,9 @@
 import * as React from 'react';
 
+import { RouterRoutes } from '~recipe';
+
 const App = () => {
-  return <div>Hello World!</div>;
+  return <RouterRoutes NotFound={<div>404</div>} />;
 };
 
 export default App;
