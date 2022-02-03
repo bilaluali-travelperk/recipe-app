@@ -19,7 +19,7 @@ module.exports = {
   resolve: {
     modules: [__dirname, "node_modules"],
     alias: {
-      "~recipe": path.join(__dirname, "app", "src", "modules"),
+      "~recipe": path.join(__dirname, "src", "modules"),
     },
     extensions: [".tsx", ".ts", ".js", ".css"],
   },
