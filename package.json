@@ -6,7 +6,9 @@
   "scripts": {
     "start:dev": "node webpackDevServer",
     "build:dev": "webpack --config webpack.config.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:lint": "eslint . --max-warnings=0 --report-unused-disable-directives",
+    "test:lint:fix": "eslint . --max-warnings=0 --report-unused-disable-directives --fix"
   },
   "repository": {
     "type": "git",
