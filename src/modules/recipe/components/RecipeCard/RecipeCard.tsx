@@ -5,10 +5,11 @@ import CardHeader from '~recipe/ui/CardHeader';
 import CardBody from '~recipe/ui/CardBody';
 import Typography from '~recipe/ui/Typography';
 
+import { RecipesCard } from './RecipeCard.styles';
 import { RecipeCardProps as Props } from './types';
 
-const RecipeCard = ({ header, body }: Props): React.ReactElement => (
-  <Card>
+const RecipeCardComponent = ({ header, body }: Props): React.ReactElement => (
+  <RecipesCard>
     <CardHeader>
       <Typography size="h2">{header}</Typography>
     </CardHeader>
@@ -17,9 +18,9 @@ const RecipeCard = ({ header, body }: Props): React.ReactElement => (
         {body}
       </Typography>
     </CardBody>
-  </Card>
+  </RecipesCard>
 );
 
-RecipeCard.defaultProps = {};
+RecipeCardComponent.defaultProps = {};
 
-export default RecipeCard;
+export default RecipeCardComponent;
