@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Card } from './Card.styles';
 import { CardProps as Props } from './types';
 
-const CardContainer = ({ children, ...props }: Props): React.ReactElement => {
+const CardComponent = ({ children, ...props }: Props): React.ReactElement => {
   return <Card {...props}>{children}</Card>;
 };
 
-CardContainer.defaultProps = {};
+CardComponent.defaultProps = {};
 
-export default CardContainer;
+export default CardComponent;

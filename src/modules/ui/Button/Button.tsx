@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button } from './Button.styles';
 import { ButtonProps as Props } from './types';
 
-const ButtonContainer = ({
+const ButtonComponent = ({
   children,
   ...props
 }: Props): React.ReactElement => {
@@ -14,8 +14,8 @@ const ButtonContainer = ({
   );
 };
 
-ButtonContainer.defaultProps = {
+ButtonComponent.defaultProps = {
   variant: 'primary',
 };
 
-export default ButtonContainer;
+export default ButtonComponent;
