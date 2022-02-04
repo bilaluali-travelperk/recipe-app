@@ -1,13 +1,9 @@
 import 'styled-components';
 
+export type Variant = 'primary' | 'secondary' | 'success' | 'danger' | 'text';
+
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colors: {
-      primary: string;
-      secondary: string;
-      success: string;
-      danger: string;
-      text: string;
-    };
+    colors: Record<Variant, string>;
   }
 }
