@@ -1,0 +1,8 @@
+import { Variant } from '../Theme';
+
+export interface ButtonProps {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: React.ReactNode;
+  variant: Variant;
+}
+
