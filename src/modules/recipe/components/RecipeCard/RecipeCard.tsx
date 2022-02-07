@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Card from '~recipe/ui/Card';
 import CardHeader from '~recipe/ui/CardHeader';
 import CardBody from '~recipe/ui/CardBody';
 import Typography from '~recipe/ui/Typography';
