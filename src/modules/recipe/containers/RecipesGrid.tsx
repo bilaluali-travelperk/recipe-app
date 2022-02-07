@@ -19,7 +19,7 @@ const RecipesGridContainer = ({
       recipes.map(({ id, name, description }: Recipe) => ({
         id,
         header: name,
-        body: description,
+        primary: description,
       })),
     [recipes],
   );

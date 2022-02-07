@@ -6,3 +6,6 @@ export const RecipesCard = styled(Card)`
   width: 100%;
 `;
 
+export const RecipesCardDivider = styled.hr`
+  border-top: 1rem solid rgb(115, 128, 148);
+`;
