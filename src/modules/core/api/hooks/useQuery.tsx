@@ -21,7 +21,7 @@ export default function useQuery<DT>({ url, options }: Props): Return<DT> {
       try {
         setLoading(true);
         const res = await fetch(url, options);
-        const data: DT = await res.json();
+        const data = await res.json();
         setData(data);
         setLoading(false);
       } catch (error) {
