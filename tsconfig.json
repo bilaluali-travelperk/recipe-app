@@ -9,8 +9,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "~recipe": ["./src/modules/index.ts"],
-      "~recipe/*": ["./src/modules/*/index.ts"]
+      "~recipe/*": ["./src/modules/*"],
     },
     "moduleResolution": "node"
   },
