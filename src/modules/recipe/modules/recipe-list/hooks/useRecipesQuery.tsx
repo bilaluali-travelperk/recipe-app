@@ -4,6 +4,6 @@ import useQuery from '~recipe/core/api/hooks/useQuery';
 
 const API_PATH = `${BASE_URL}/recipes`;
 
-export default function useRecipeQuery() {
+export default function useRecipesQuery() {
   return useQuery<Array<Recipe>>({ url: API_PATH });
 }
