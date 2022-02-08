@@ -23,3 +23,7 @@ export const H6 = styled.h6<TypographyProps>`
 export const Text = styled.p<TypographyProps>`
   color: ${({ theme, variant }) => theme.colors[variant]};
 `;
+
+export const Small = styled.small<TypographyProps>`
+  color: ${({ theme, variant }) => theme.colors[variant]};
+`;

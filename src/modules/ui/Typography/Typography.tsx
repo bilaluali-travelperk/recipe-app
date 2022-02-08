@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { H1, H2, H3, H4, H5, H6, Text } from './Typography.styles';
+import { H1, H2, H3, H4, H5, H6, Text, Small } from './Typography.styles';
 import { TypographyProps as Props } from './types';
 
 const Typography = ({
@@ -18,6 +18,7 @@ const Typography = ({
         h5: H5,
         h6: H6,
         text: Text,
+        small: Small,
       }[size]),
     [size],
   );
