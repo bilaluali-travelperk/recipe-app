@@ -15,7 +15,7 @@ const RecipeIngredientListComponent = ({
   ...props
 }: Props): React.ReactElement => (
   <RecipeIngredientListContainer>
-    <Typography size="h5">{title}</Typography>
+    <Typography size="h4">{title}</Typography>
     <RecipeIngredientList {...props}>
       {items.map(({ key, content, ...item }) => (
         <RecipeIngredientListItem key={key} {...item}>
