@@ -14,6 +14,7 @@ module.exports = {
     path: path.join(__dirname, "/assets/dist/"),
     filename: "bundle.js",
     pathinfo: true,
+    publicPath: 'http://localhost:8080/'
   },
 
   resolve: {
