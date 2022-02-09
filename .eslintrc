@@ -1,0 +1,81 @@
+{
+  "root": true,
+
+  "parser": "@typescript-eslint/parser",
+
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "project": "./tsconfig.json"
+  },
+
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
+    }
+  },
+
+  "rules": {
+    "block-scoped-var": ["error"],
+    "camelcase": ["warn", { "properties": "always", "allow": [] }],
+    "comma-style": ["warn", "last"],
+    "curly": ["warn"],
+    "eqeqeq": ["error", "always"],
+    "eol-last": ["warn"],
+    "linebreak-style": ["error", "unix"],
+    "no-dupe-keys": ["error"],
+    "no-duplicate-case": ["error"],
+    "no-extra-semi": ["warn"],
+    "no-labels": ["error"],
+    "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+    "no-redeclare": ["warn"],
+    "no-return-assign": ["error", "always"],
+    "no-sequences": ["error"],
+    "no-trailing-spaces": ["warn"],
+    "no-undef": ["error"],
+    "no-unexpected-multiline": ["warn"],
+    "no-unreachable": ["warn"],
+    "no-unused-vars": [
+      "warn",
+      {
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^unused($|[A-Z].*$)",
+        "argsIgnorePattern": "^unused($|[A-Z].*$)",
+        "varsIgnorePattern": "React|^unused($|[A-Z].*$)",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-use-before-define": ["error", { "functions": false }],
+    "one-var": ["warn", "never"],
+    "prefer-arrow-callback": ["warn", { "allowNamedFunctions": true }],
+    "prettier/prettier": ["error"],
+    "semi": ["warn", "always"],
+    "semi-spacing": ["warn", { "before": false, "after": true }],
+    "semi-style": ["warn", "last"],
+    "react/jsx-wrap-multilines": [0],
+    "react/require-default-props": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  }
+}
