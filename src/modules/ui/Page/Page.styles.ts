@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Page = styled.div`
   padding-left: 4rem;
   padding-right: 4rem;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 `;
 
 export const PageGrid = styled.div`
