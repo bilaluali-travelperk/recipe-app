@@ -9,7 +9,7 @@ type Data = {
 const desanitize = (recipe: Recipe): Data => ({
   name: recipe.name,
   description: recipe.description,
-  ingredients: recipe.ingredients.join(' '),
+  ingredients: recipe.ingredients.map(({ name }) => name).join(' '),
 });
 
 export default desanitize;

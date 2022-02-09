@@ -7,5 +7,5 @@ export const RecipesCard = styled(Card)`
 `;
 
 export const RecipesCardDivider = styled.hr`
-  border-top: 1rem solid rgb(115, 128, 148);
+  border-top: 0.05rem solid rgb(115, 128, 148);
 `;

@@ -28,7 +28,6 @@ const RecipeFormContainer = ({
   const recipeId = recipe?.id;
   const [formData, setFormData] = React.useState<Data>(initialFormData);
 
-
   React.useEffect(() => {
     setFormData(initialFormData);
   }, [initialFormData]);
@@ -38,12 +37,15 @@ const RecipeFormContainer = ({
       event.preventDefault();
       const recipe = sanitize(formData);
 
-      if (recipeId) await update(recipeId, recipe);
-      else await create(recipe);
-
-      navigate('/recipes');
+      if (recipeId) {
+        await update(recipeId, recipe);
+        navigate(`/recipes/${recipeId}`);
+      } else {
+        await create(recipe);
+        navigate('/recipes');
+      }
     },
-    [formData],
+    [recipeId, formData],
   );
 
   const handleChange = React.useCallback<OnChange>((event) => {
