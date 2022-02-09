@@ -8,6 +8,8 @@ import {
 
 export const FormMultipleField = styled.div`
   display: inline-grid;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const FormMultipleFieldLabel = styled.label<FormMultipleFieldLabelProps>`

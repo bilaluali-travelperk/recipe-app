@@ -1,8 +1,10 @@
 import { Variant } from '../Theme';
 
-export interface ButtonProps {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  children?: React.ReactNode;
-  type?: HTMLButtonElement['type'];
+export type ButtonHTMLProps = Omit<
+  React.HTMLProps<HTMLButtonElement>,
+  'ref' | 'as'
+>;
+
+export interface ButtonProps extends ButtonHTMLProps {
   variant: Variant;
 }

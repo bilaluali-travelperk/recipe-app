@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-import { FormFieldLabelProps, FormFieldInputProps, FormFieldHelperProps } from './types';
+import {
+  FormFieldLabelProps,
+  FormFieldInputProps,
+  FormFieldHelperProps,
+} from './types';
 
 export const FormField = styled.div`
   display: inline-grid;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const FormFieldLabel = styled.label<FormFieldLabelProps>`

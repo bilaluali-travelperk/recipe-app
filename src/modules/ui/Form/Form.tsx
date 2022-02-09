@@ -1,16 +1,18 @@
 import * as React from 'react';
 
-import { Form, FormSubmit } from './Form.styles';
+import { FormContainer, Form, FormSubmit } from './Form.styles';
 import { FormProps as Props } from './types';
 
 const FormComponent = ({
   SubmitProps,
   ...props
 }: Props): React.ReactElement => (
-  <React.Fragment>
-    <Form {...props} />
-    <FormSubmit {...SubmitProps} />
-  </React.Fragment>
+  <FormContainer>
+    <Form id="formId" {...props} />
+    <FormSubmit type="submit" form="formId" {...SubmitProps}>
+      Save
+    </FormSubmit>
+  </FormContainer>
 );
 
 FormComponent.defaultProps = {};

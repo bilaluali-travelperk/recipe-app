@@ -4,7 +4,9 @@ import Form from '~recipe/ui/Form';
 import FormField from '~recipe/ui/FormField';
 import FormMultipleField from '~recipe/ui/FormMultipleField';
 
-export const RecipeForm = styled(Form)``;
+export const RecipeForm = styled(Form)`
+  display: inline-grid;
+`;
 
 export const RecipeFormField = styled(FormField)``;
 
