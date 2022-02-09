@@ -4,11 +4,14 @@ import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { Recipe } from '~recipe/models';
 import { BASE_URL } from '~recipe/core';
 
-import sanitize from '../modules/recipe-create/helpers/sanitize';
+import sanitize, { Data } from '../modules/recipe-create/helpers/sanitize';
+import desanitize from '../modules/recipe-update/helpers/desanitize';
 import { RecipeQuery } from '../modules/recipe-create/helpers/sanitize';
 import RecipeForm from '../components/RecipeForm';
 
-export interface Props {}
+export interface Props {
+  recipe?: Recipe;
+}
 
 type OnChange = (
   event:
@@ -16,16 +19,28 @@ type OnChange = (
     | React.ChangeEvent<HTMLTextAreaElement>,
 ) => void;
 
-const RecipeFormContainer = (props: Props): React.ReactElement => {
+const RecipeFormContainer = ({
+  recipe,
+  ...props
+}: Props): React.ReactElement => {
   const navigate = useNavigate();
-  const initialFormData = useInitialFormData();
-  const [formData, setFormData] = React.useState(initialFormData);
+  const initialFormData = useInitialFormData(recipe);
+  const recipeId = recipe?.id;
+  const [formData, setFormData] = React.useState<Data>(initialFormData);
+
+
+  React.useEffect(() => {
+    setFormData(initialFormData);
+  }, [initialFormData]);
 
   const handleSubmit = React.useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       const recipe = sanitize(formData);
-      await submit(recipe);
+
+      if (recipeId) await update(recipeId, recipe);
+      else await create(recipe);
+
       navigate('/recipes');
     },
     [formData],
@@ -38,7 +53,10 @@ const RecipeFormContainer = (props: Props): React.ReactElement => {
     }));
   }, []);
 
-  const fields = useRecipeFormFields({ onChange: handleChange });
+  const fields = useRecipeFormFields({
+    onChange: handleChange,
+    values: formData,
+  });
 
   return (
     <RecipeForm
@@ -52,17 +70,24 @@ const RecipeFormContainer = (props: Props): React.ReactElement => {
 
 export default RecipeFormContainer;
 
-const useInitialFormData = () =>
+const useInitialFormData = (recipe?: Recipe) =>
   React.useMemo(
     () => ({
       name: '',
       description: '',
       ingredients: '',
+      ...(recipe ? desanitize(recipe) : {}),
     }),
-    [],
+    [recipe],
   );
 
-const useRecipeFormFields = ({ onChange }: { onChange: OnChange }) =>
+const useRecipeFormFields = ({
+  onChange,
+  values,
+}: {
+  onChange: OnChange;
+  values: Data;
+}) =>
   React.useMemo(
     () => ({
       name: {
@@ -70,6 +95,7 @@ const useRecipeFormFields = ({ onChange }: { onChange: OnChange }) =>
           id: 'name',
           type: 'text',
           name: 'name',
+          value: values['name'],
           required: true,
           onChange,
         },
@@ -86,6 +112,7 @@ const useRecipeFormFields = ({ onChange }: { onChange: OnChange }) =>
           id: 'description',
           type: 'text',
           name: 'description',
+          value: values['description'],
           required: true,
           onChange,
         },
@@ -103,6 +130,7 @@ const useRecipeFormFields = ({ onChange }: { onChange: OnChange }) =>
           type: 'text',
           name: 'ingredients',
           required: true,
+          value: values['ingredients'],
           onChange,
         },
         LabelProps: {
@@ -114,10 +142,10 @@ const useRecipeFormFields = ({ onChange }: { onChange: OnChange }) =>
         },
       },
     }),
-    [],
+    [onChange, values],
   );
 
-async function submit(recipe: RecipeQuery) {
+async function create(recipe: RecipeQuery) {
   const resp = await fetch(`${BASE_URL}/recipes/`, {
     method: 'POST',
     body: JSON.stringify(recipe),
@@ -130,4 +158,19 @@ async function submit(recipe: RecipeQuery) {
   const createdRecipe: Recipe = await resp.json();
 
   return createdRecipe;
+}
+
+async function update(id: string, recipe: RecipeQuery) {
+  const resp = await fetch(`${BASE_URL}/recipes/${id}/`, {
+    method: 'PUT',
+    body: JSON.stringify(recipe),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (resp.status !== 200) {
+    throw new Error(`[${resp.status}]: Recipe not created`);
+  }
+  const updatedRecipe: Recipe = await resp.json();
+
+  return updatedRecipe;
 }

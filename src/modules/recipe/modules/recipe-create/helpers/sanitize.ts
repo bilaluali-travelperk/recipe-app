@@ -1,8 +1,8 @@
-type Data = {
+export interface Data {
   name: string;
   description: string;
   ingredients: string;
-};
+}
 
 export interface IngredientQuery {
   name: string;
